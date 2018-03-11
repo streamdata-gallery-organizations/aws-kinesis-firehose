@@ -1,0 +1,130 @@
+<section class="filterTags" data-filter-tags="">
+   <div class="filterTags__container">
+
+     <script>
+
+     function reset()
+       {
+       var elements = document.getElementsByClassName('taggedLinkCard taggedLinkCard--red');
+
+       for (var i = 0; i < elements.length; i++)
+         {
+         thisid = elements[i].getAttribute("id");
+         document.getElementById(thisid).style.display = '';
+         }
+       }
+
+      function filterbyrank()
+        {
+        reset();
+
+        ranking = document.getElementById('rankFilter').value;
+        var elements = document.getElementsByClassName('taggedLinkCard taggedLinkCard--red');
+        if(ranking != 'all')
+          {
+          for (var i = 0; i < elements.length; i++)
+            {
+            thisrank = elements[i].getAttribute("rank");
+            thisid = elements[i].getAttribute("id");
+            if(ranking != thisrank)
+              {
+              //console.log("removing!");
+              document.getElementById(thisid).style.display = 'none';
+              }
+            else
+              {
+              //console.log("leaving!");
+              }
+            //console.log(elements[i].getAttribute("verb"));
+            }
+          }
+        }
+      function filterbytag()
+        {
+        url = document.getElementById('tagfilter').value;
+        //alert(url);
+        location.href = url;
+        }
+      function filterbyverb()
+        {
+        reset();
+
+        verb = document.getElementById('verbFilter').value;
+        verb = verb.toLowerCase();
+        var elements = document.getElementsByClassName('taggedLinkCard taggedLinkCard--red');
+        console.log("verb: " + verb);
+        if(verb != 'all')
+          {
+          for (var i = 0; i < elements.length; i++)
+            {
+            thisverb = elements[i].getAttribute("verb");
+            thisid = elements[i].getAttribute("id");
+            //console.log("verb: " + verb);
+            //console.log("thisverb: " + thisverb);
+            if(verb != thisverb)
+              {
+              //console.log("removing!");
+              document.getElementById(thisid).style.display = 'none';
+              }
+            else
+              {
+              //console.log("leaving!");
+              }
+            //console.log(elements[i].getAttribute("verb"));
+            }
+          }
+        }
+
+     </script>
+
+     <table border="0">
+       <tr>
+         <td width="33%" align="center">
+
+           <form>
+           <strong>Ranking:</strong>
+           <select name="rankFilter" id="rankFilter">
+             <option value="All">All</option>
+             <option value="10">10</option>
+             <option value="9">9</option>
+             <option value="8">8</option>
+           </select>
+           <input type="button" onclick="filterbyrank();" name="filter_by" value="Go" />
+
+         </td>
+
+         <td width="33%" align="center">
+
+           <form>
+           <strong>Tag(s):</strong>
+           <select name="filter" id="tagfilter">
+           {% assign navigation = site.data.navigation | sort: 'label' %}
+           {% for nav in navigation %}}
+               <option value="{{ nav.url }}"{% if nav.label == site.tag %} selected{% endif %}>{{ nav.label }}</option>
+           {% endfor %}
+           </select>
+           <input type="button" onclick="filterbytag();" name="filter_by" value="Go" />
+
+         </td>
+
+         <td width="33%" align="center">
+
+           <form>
+           <strong>Verb:</strong>
+           <select name="verbFilter" id="verbFilter">
+             <option value="All">All</option>
+             <option value="GET">GET</option>
+             <option value="POST">POST</option>
+             <option value="PUT">PUT</option>
+             <option value="DELETE">DELETE</option>
+           </select>
+           <input type="button" onclick="filterbyverb();" name="filter_by" value="Go" />
+
+         </td>
+       </tr>
+     </table>
+
+   </form>
+
+   </div>
+</section>
