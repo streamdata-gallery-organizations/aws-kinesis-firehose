@@ -1,0 +1,121 @@
+{% assign blog_url = '' %}
+{% assign blogrss_url = '' %}
+{% assign portal_url = '' %}
+{% assign gitub_url = '' %}
+{% assign twitter_url = '' %}
+{% assign website_url = '' %}
+{% assign getting_started_url = '' %}
+{% assign authentication_url = '' %}
+{% assign faq_url = '' %}
+{% assign login_url = '' %}
+{% assign signup_url = '' %}
+{% assign documentation_url = '' %}
+{% assign code_page_url = '' %}
+{% assign road_map_url = '' %}
+{% assign issue_url = '' %}
+{% assign change_log_url = '' %}
+{% assign status_dashboard_url = '' %}
+{% assign support_url = '' %}
+{% assign plan_url = '' %}
+{% assign rate_limit_url = '' %}
+{% assign terms_of_service_url = '' %}
+{% assign privacy_policy_url = '' %}
+
+{% for common in apis_json.x-common %}
+
+  {% if common.type == 'x-portal' %}
+   {% assign portal_url = common.url %}
+  {% endif %}
+
+  {% if common.type == 'x-website' %}
+   {% assign website_url = common.url %}
+  {% endif %}
+
+  {% if portal_url == '' %}
+   {% assign portal_url = website_url %}
+  {% endif %}
+
+  {% if common.type == 'x-getting-started' %}
+   {% assign getting_started_url = common.url %}
+  {% endif %}
+
+  {% if common.type == 'x-authentication-overview' %}
+   {% assign authentication_url = common.url %}
+  {% endif %}
+
+  {% if common.type == 'x-faq' %}
+   {% assign faq_url = common.url %}
+  {% endif %}
+
+  {% if common.type == 'x-login' %}
+   {% assign login_url = common.url %}
+  {% endif %}
+
+  {% if common.type == 'x-selfservice-registration' %}
+   {% assign signup_url = common.url %}
+  {% endif %}
+
+  {% if common.type == 'x-documentation' %}
+   {% assign documentation_url = common.url %}
+  {% endif %}
+
+  {% if common.type == 'x-code-page' %}
+   {% assign code_page_url = common.url %}
+  {% endif %}
+
+  {% if common.type == 'x-road-map' %}
+   {% assign road_map_url = common.url %}
+  {% endif %}
+
+  {% if common.type == 'x-issues' %}
+   {% assign issue_url = common.url %}
+  {% endif %}
+
+  {% if common.type == 'x-change-log' %}
+   {% assign change_log_url = common.url %}
+  {% endif %}
+  {% if common.type == 'x-status' %}
+   {% assign status_dashboard_url = common.url %}
+  {% endif %}
+
+  {% if common.type == 'x-support' %}
+   {% assign support_url = common.url %}
+  {% endif %}
+
+  {% if common.type == 'x-blog' %}
+   {% assign blog_url = common.url %}
+  {% endif %}
+
+  {% if common.type == 'x-blog-rss' %}
+   {% assign blogrss_url = common.url %}
+  {% endif %}
+
+  {% if common.type == 'x-twitter' %}
+   {% assign twitter_url = common.url %}
+  {% endif %}
+
+  {% if common.type == 'x-github' %}
+   {% assign gitub_url = common.url %}
+  {% endif %}
+
+  {% if common.type == 'x-signup' %}
+   {% assign gitub_url = common.url %}
+  {% endif %}
+
+  {% if common.type == 'x-dedicated-plans--pricing-page' %}
+   {% assign plan_url = common.url %}
+  {% endif %}
+
+  {% if common.type == 'x-rate-limit' %}
+   {% assign rate_limit_url = common.url %}
+  {% endif %}
+
+  {% if common.type == 'x-terms-of-service-page' %}
+   {% assign terms_of_service_url = common.url %}
+  {% endif %}
+
+  {% if common.type == 'x-privacy-policy-page' %}
+   {% assign privacy_policy_url = common.url %}
+  {% endif %}
+
+{% endfor %}
