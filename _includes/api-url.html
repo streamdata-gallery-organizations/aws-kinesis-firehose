@@ -1,0 +1,7 @@
+{% assign api_url = page.schemes[0] | append: '://' | append: page.host | append: page.basePath | append: path %}
+{% assign api_query = '' %}
+{% for parameter in api_path_parameters %}
+  {% if parameter.in == 'query' %}
+    {% assign api_query = api_query | append: '&' | append: parameter.name | append: '={field_value}' %}
+  {% endif %}
+{% endfor %}
