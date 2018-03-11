@@ -1,0 +1,25 @@
+---
+layout: default
+---
+
+{% assign openapi = page | replace: ' ','-' | downcase %}
+{% assign slug = page.info.title | replace: ' ','-' | downcase %}
+
+{% assign slug = page.info.title %}
+{% for item in site.listings %}
+  {% if item.name %}
+    {% if page.x-collection-name == item.name %}
+      {% assign apis_json = item %}
+    {% endif %}
+  {% endif %}
+{% endfor %}
+
+{% include apis-json.html %}
+{% include x-common.html %}
+{% include api-paths.html %}
+{% include api-url.html %}
+{% include api-stream-url.html %}
+
+{% assign stream_rank = page.x-streamrank %}
+
+{% include api-details.html %}
