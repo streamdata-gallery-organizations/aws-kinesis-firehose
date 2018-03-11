@@ -1,0 +1,30 @@
+---
+layout: default
+title: Streamdata.io API Gallery - Payments
+---
+
+{% assign listing_object = site.listings %}
+{% assign tag_slug = "listings" %}
+
+<div class="shortMasthead  shortMasthead--extra-top-padding ">
+   <div class="shortMasthead__container">
+
+     {% include api-listing-feature.html %}
+
+   </div>
+</div>
+
+<section class="taggedLinkCards">
+
+   {% include api-tag-filter.html %}
+
+   {% include api-listing.html %}
+
+</section>
+<div class="submitApi__overflowContainer" data-submit-api="">
+   <div class="submitApi submitApi--left-hand-image">
+
+     {% include api-listing-submit.html %}
+
+   </div>
+</div>
