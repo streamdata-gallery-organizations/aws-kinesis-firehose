@@ -1,0 +1,231 @@
+<section class="APIDetailHeader  APIDetailHeader--extra-top-padding ">
+   <div class="APIDetailHeader__container">
+      <div class="APIDetailHeader__left">
+         <img src="{{ apis_json.image }}" alt="{{ page.info.title }}" class="APIDetailHeader__image">
+      </div>
+      <div class="APIDetailHeader__right">
+         <h1 class="APIDetailHeader__title">{{ api_name }} - {{ api_path_summary }}</h1>
+         <h2 class="APIDetailHeader__subtitle">{{ api_path_description }}</h2>
+         <div class="APIDetailHeader__dateContainer">
+            <p class="APIDetailHeader__dateCallout">Posted on:</p>
+            <p class="APIDetailHeader__date">{{ apis_json.modified | date: %b %y" }}</p>
+         </div>
+      </div>
+   </div>
+</section>
+
+{% if stream_rank.time_percentage != 0 and stream_rank.size_percentage != 0 and stream_rank.change_percentage != 0 %}
+  <section class="APIDetailStats">
+     <h2 class="APIDetailStats__title">Savings With Streamdata.io</h2>
+     <div class="APIDetailStats__row">
+        <div class="APIDetailStats__statContainer">
+           <p class="APIDetailStats__stat">{{ stream_rank.time_percentage }}%</p>
+           <p class="APIDetailStats__copy">Processor Savings</p>
+        </div>
+        <div class="APIDetailStats__statContainer">
+           <p class="APIDetailStats__stat">{{ stream_rank.size_percentage }}%</p>
+           <p class="APIDetailStats__copy">Bandwidth Savings</p>
+        </div>
+        <div class="APIDetailStats__statContainer">
+           <p class="APIDetailStats__stat">{{ stream_rank.change_percentage }}%</p>
+           <p class="APIDetailStats__copy">Data Change</p>
+        </div>
+     </div>
+  </section>
+{% endif %}
+
+<section class="APIDescription">
+   <div class="APIDesciption__container">
+      <h2 class="APIDescription__header">API Description</h2>
+      <div class="APIDescription__table">
+         <div class="APIDescription__tableHeader">
+            <p class="APIDescription__tableHeaderCopy">API</p>
+         </div>
+         <div class="APIDescription__tableBody">
+            <div class="APIDescription__tableBodyCopy">
+               <p>{{ api_path_summary }}</p>
+            </div>
+         </div>
+      </div>
+      <div class="APIDescription__table">
+         <div class="APIDescription__tableHeader">
+            <p class="APIDescription__tableHeaderCopy">Provider</p>
+         </div>
+         <div class="APIDescription__tableBody">
+            <div class="APIDescription__tableBodyCopy">
+               <p>{{ page.info.title }}</p>
+            </div>
+         </div>
+      </div>
+      <div class="APIDescription__table">
+         <div class="APIDescription__tableHeader">
+            <p class="APIDescription__tableHeaderCopy">API decription</p>
+         </div>
+         <div class="APIDescription__tableBody">
+            <div class="APIDescription__tableBodyCopy">
+               <p>{{ api_path_description }}</p>
+            </div>
+         </div>
+      </div>
+      <div class="APIDescription__table">
+         <div class="APIDescription__tableHeader">
+            <p class="APIDescription__tableHeaderCopy">API URL</p>
+         </div>
+         <div class="APIDescription__tableBody">
+            <div class="APIDescription__tableBodyCopy">
+               <p><a href="{{ api_url }}" target="_blank" rel="noopener">{{ api_url }}</a></p>
+            </div>
+         </div>
+      </div>
+
+      {% if signup_url != '' %}
+      <div class="APIDescription__table">
+         <div class="APIDescription__tableHeader">
+            <p class="APIDescription__tableHeaderCopy">Sign Up Page</p>
+         </div>
+         <div class="APIDescription__tableBody">
+            <div class="APIDescription__tableBodyCopy">
+               <p><a href="{{ signup_url }}" target="_blank" rel="noopener">{{ signup_url }}</a></p>
+            </div>
+         </div>
+      </div>
+      {% endif %}
+
+      {% if documentation_url != '' %}
+      <div class="APIDescription__table">
+         <div class="APIDescription__tableHeader">
+            <p class="APIDescription__tableHeaderCopy">Documentation</p>
+         </div>
+         <div class="APIDescription__tableBody">
+            <div class="APIDescription__tableBodyCopy">
+               <p><a href="{{ documentation_url }}" target="_blank" rel="noopener">{{ documentation_url }}</a></p>
+            </div>
+         </div>
+      </div>
+      {% endif %}
+
+      {% if twitter_url != '' %}
+      <div class="APIDescription__table">
+         <div class="APIDescription__tableHeader">
+            <p class="APIDescription__tableHeaderCopy">Twitter</p>
+         </div>
+         <div class="APIDescription__tableBody">
+            <div class="APIDescription__tableBodyCopy">
+               <p><a href="{{ twitter_url }}" target="_blank" rel="noopener">{{ twitter_url }}</a></p>
+            </div>
+         </div>
+      </div>
+      {% endif %}
+
+      {% if gitub_url != '' %}
+      <div class="APIDescription__table">
+         <div class="APIDescription__tableHeader">
+            <p class="APIDescription__tableHeaderCopy">Github</p>
+         </div>
+         <div class="APIDescription__tableBody">
+            <div class="APIDescription__tableBodyCopy">
+               <p><a href="{{ gitub_url }}" target="_blank" rel="noopener">{{ gitub_url }}</a></p>
+            </div>
+         </div>
+      </div>
+      {% endif %}
+
+      {% if terms_of_service_url != '' %}
+      <div class="APIDescription__table">
+         <div class="APIDescription__tableHeader">
+            <p class="APIDescription__tableHeaderCopy">Terms of Service</p>
+         </div>
+         <div class="APIDescription__tableBody">
+            <div class="APIDescription__tableBodyCopy">
+               <p><a href="{{ terms_of_service_url }}" target="_blank" rel="noopener">{{ terms_of_service_url }}</a></p>
+            </div>
+         </div>
+      </div>
+      {% endif %}
+
+      <p class="APIDescription__instructions">Curl command through Streamdata.io</p>
+   </div>
+   <div class="APIDescription__browserWindow">
+      <div class="APIDescription__browserWindowTitlteBar">
+         <div class="APIDescription__browserWindowControls">
+            <svg class="APIDescrption__browserWindowControl APIDescrption__browserWindowClose">
+               <circle cx="6" cy="6" r="3" fill="#D0021B"></circle>
+            </svg>
+            <svg class="APIDescrption__browserWindowControl APIDescrption__browserWindowMinimize">
+               <circle cx="6" cy="6" r="3" fill="#F8E71C"></circle>
+            </svg>
+            <svg class="APIDescrption__browserWindowControl APIDescrption__browserWindowExpand">
+               <circle cx="6" cy="6" r="3" fill="#7ED321"></circle>
+            </svg>
+         </div>
+      </div>
+      <div class="APIDescrpition__browserWindowMain">
+         <p class="APIDescription__browserWindowMainCopy">
+            {{ stream_url }}
+         </p>
+      </div>
+   </div>
+</section>
+
+{% if stream_rank.time_percentage != 0 and stream_rank.size_percentage != 0 and stream_rank.change_percentage != 0 %}
+<section class="APISpecs">
+   <div class="APISpecs__container">
+      <div class="APISpecs__column">
+         <h2 class="APISpecs__header">API Specifications</h2>
+         <div class="APISpecs__row">
+            <div class="APISpecs__rowHeader">
+               <div class="APISpecs__rowHeaderCopy">Average Download Size</div>
+            </div>
+            <div class="APISpecs__rowStats">
+               <div class="APISpecs__rowStatsCopy">
+                  <p><strong>{{ stream_rank.polling_size_download_average }} Kb</strong></p>
+               </div>
+            </div>
+         </div>
+         <div class="APISpecs__row">
+            <div class="APISpecs__rowHeader">
+               <div class="APISpecs__rowHeaderCopy">Average Download Time</div>
+            </div>
+            <div class="APISpecs__rowStats">
+               <div class="APISpecs__rowStatsCopy">
+                  <p><strong>{{ stream_rank.polling_total_time_average }} second(s)</strong></p>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="APISpecs__column">
+         <h2 class="APISpecs__header">Test Conditions</h2>
+         <div class="APISpecs__row">
+            <div class="APISpecs__rowHeader">
+               <div class="APISpecs__rowHeaderCopy">Date of test</div>
+            </div>
+            <div class="APISpecs__rowStats">
+               <div class="APISpecs__rowStatsCopy"
+                  <p><strong>{{ stream_rank.last_run | date: %b %y" }}</strong></p>
+               </div>
+            </div>
+         </div>
+         <div class="APISpecs__row">
+            <div class="APISpecs__rowHeader">
+               <div class="APISpecs__rowHeaderCopy">Duration of test</div>
+            </div>
+            <div class="APISpecs__rowStats">
+               <div class="APISpecs__rowStatsCopy">
+                  <p><strong>{{ stream_rank.days_run }} days</strong></p>
+               </div>
+            </div>
+         </div>
+         <div class="APISpecs__row">
+            <div class="APISpecs__rowHeader">
+               <div class="APISpecs__rowHeaderCopy">Polling frequency used for test</div>
+            </div>
+            <div class="APISpecs__rowStats">
+               <div class="APISpecs__rowStatsCopy">
+                  <p><strong>60 second(s)</strong></p>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+{% endif %}
