@@ -1,0 +1,163 @@
+{% assign api_slug = page.name | replace: ' ','-' | replace: '/','' | replace: '&','-' | replace: '=','-' | replace: '{','-' | replace: '}','-' | replace: '?','-' | replace: '_','-' | replace: '--','-' | downcase %}
+
+<section class="APIDetailHeader  APIDetailHeader--extra-top-padding ">
+   <div class="APIDetailHeader__container">
+      <div class="APIDetailHeader__left">
+         <img src="{{ apis_json.image }}" alt="{{ page.info.title }}" class="APIDetailHeader__image">
+      </div>
+      <div class="APIDetailHeader__right">
+         <h1 class="APIDetailHeader__title">{{ page.name }}</h1>
+         <h2 class="">{{ page.description | replace: "???","'" }}</h2>
+         <div class="APIDetailHeader__dateContainer" style="padding-top:10px;">
+            <p class="APIDetailHeader__dateCallout">Posted on:</p>
+            <p class="APIDetailHeader__date">{{ page.modified | date: %b %y" }}</p>
+         </div>
+      </div>
+   </div>
+</section>
+
+<section class="APIDescription">
+   <div class="APIDesciption__container">
+      <h2 class="APIDescription__header">Links</h2>
+
+      {% if portal_url != '' %}
+      <div class="APIDescription__table">
+         <div class="APIDescription__tableHeader">
+            <p class="APIDescription__tableHeaderCopy">Developer Portal</p>
+         </div>
+         <div class="APIDescription__tableBody">
+            <div class="APIDescription__tableBodyCopy">
+               <p><a href="{{ portal_url }}" target="_blank" rel="noopener">{{ portal_url }}</a></p>
+            </div>
+         </div>
+      </div>
+      {% endif %}
+
+      {% if signup_url != '' %}
+      <div class="APIDescription__table">
+         <div class="APIDescription__tableHeader">
+            <p class="APIDescription__tableHeaderCopy">Sign Up Page</p>
+         </div>
+         <div class="APIDescription__tableBody">
+            <div class="APIDescription__tableBodyCopy">
+               <p><a href="{{ signup_url }}" target="_blank" rel="noopener">{{ signup_url }}</a></p>
+            </div>
+         </div>
+      </div>
+      {% endif %}
+
+      {% if documentation_url != '' %}
+      <div class="APIDescription__table">
+         <div class="APIDescription__tableHeader">
+            <p class="APIDescription__tableHeaderCopy">Documentation</p>
+         </div>
+         <div class="APIDescription__tableBody">
+            <div class="APIDescription__tableBodyCopy">
+               <p><a href="{{ documentation_url }}" target="_blank" rel="noopener">{{ documentation_url }}</a></p>
+            </div>
+         </div>
+      </div>
+      {% endif %}
+
+      {% if twitter_url != '' %}
+      <div class="APIDescription__table">
+         <div class="APIDescription__tableHeader">
+            <p class="APIDescription__tableHeaderCopy">Twitter</p>
+         </div>
+         <div class="APIDescription__tableBody">
+            <div class="APIDescription__tableBodyCopy">
+               <p><a href="{{ twitter_url }}" target="_blank" rel="noopener">{{ twitter_url }}</a></p>
+            </div>
+         </div>
+      </div>
+      {% endif %}
+
+      {% if gitub_url != '' %}
+      <div class="APIDescription__table">
+         <div class="APIDescription__tableHeader">
+            <p class="APIDescription__tableHeaderCopy">Github</p>
+         </div>
+         <div class="APIDescription__tableBody">
+            <div class="APIDescription__tableBodyCopy">
+               <p><a href="{{ gitub_url }}" target="_blank" rel="noopener">{{ gitub_url }}</a></p>
+            </div>
+         </div>
+      </div>
+      {% endif %}
+
+      {% if terms_of_service_url != '' %}
+      <div class="APIDescription__table">
+         <div class="APIDescription__tableHeader">
+            <p class="APIDescription__tableHeaderCopy">Terms of Service</p>
+         </div>
+         <div class="APIDescription__tableBody">
+            <div class="APIDescription__tableBodyCopy">
+               <p><a href="{{ terms_of_service_url }}" target="_blank" rel="noopener">{{ terms_of_service_url }}</a></p>
+            </div>
+         </div>
+      </div>
+      {% endif %}
+
+   </div>
+</section>
+
+
+<!-- See how many paths we have-->
+{% assign path_count = 0 %}
+{% for item in site.listings %}
+  {% if item.swagger %}
+    {% if item.swagger == "2.0" %}
+      {% if page.name == item.x-collection-name %}
+        {% for path in item.paths %}
+          {% assign path_count = path_count | plus: 1 %}
+        {% endfor %}
+      {% endif %}
+    {% endif %}
+  {% endif %}
+{% endfor %}
+
+{% if path_count > 0 %}
+  <section class="APIDescription">
+     <div class="APIDesciption__container">
+        <h2 class="APIDescription__header">API Paths</h2>
+
+        <table border="0">
+        {% for item in site.listings %}
+          {% if item.swagger %}
+            {% if item.swagger == "2.0" %}
+              {% if page.name == item.x-collection-name %}
+                {% for path in item.paths %}
+
+                  {% assign path_name = path[0] %}
+                  {% assign api_path_slug = path_name | lstrip | rstrip | remove_first: "/" | replace: '{','' | replace: '}','' | replace: ' ','-' | replace: '/','-' | replace: '&','-' | replace: ':','' | replace: '.','-' | replace: '=','-' | replace: '?','-' | replace: '_','-' | replace: '---','-' | replace: '--','-' | downcase %}
+                  {% for method in path[1] %}
+
+                    {% assign method_details = method[1] %}
+                    {% assign verb = method[0] %}
+                    {% assign api_path_slug = api_path_slug | append: '-' | append: verb | replace: '_','-' | replace: '---','-' | replace: '--','-' | downcase %}
+                    {% assign api_path_summary = method_details.summary %}
+                    {% assign api_path_description = method_details.description %}
+                    {% assign api_path_parameters = method_details.parameters %}
+                    {% assign api_path_tags = method_details.tags %}
+
+                    <tr>
+                      <td width="5%" align="center">&rarr;</td>
+                      <td>
+                        <a href="/listings/{{ tag_slug }}/{{ api_slug }}/{{ api_path_slug }}/" target="_blank">{{ api_path_summary }}</a></td>
+                      </td>
+                      <td width="8%" align="center">({{ verb | upcase }})</td>
+                      <td>{{ path_name }}</td>
+                    </tr>
+
+                  {% endfor %}
+                {% endfor %}
+              {% endif %}
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+      </table>
+    </div>
+  </section>
+{% endif %}
+<br /><br />
+<p align="center"><a href="/"><strong>Return to Main Page</strong></a></p>
