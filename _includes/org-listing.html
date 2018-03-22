@@ -1,0 +1,31 @@
+
+<div class="taggedLinkCards__cards" id="listing">
+  {% for entry in listing_object %}
+    {% if entry.name %}
+
+        {% assign api_name = entry.name %}
+        {% assign api_slug = api_name | replace: ' ','-' | replace: '/','' | replace: '&','-' | replace: '=','-' | replace: '{','-' | replace: '}','-' | replace: '?','-' | replace: '_','-' | replace: '--','-' | downcase %}
+        {% assign api_description = entry.description %}
+        {% assign api_image = entry.image %}
+        {% assign api_json_url = entry.url %}
+        {% assign api_json_kin_rank = entry.x-kinRank %}
+        {% assign api_json_alexa_rank = entry.x-alexaRank %}
+
+         <div class="taggedLinkCard taggedLinkCard--red" data-platform="html5" verb="{{ verb }}" rank="{{ api_json_kin_rank }}" id="api-{% increment counter %}">
+            <div class="taggedLinkCard__container enterAnimation enterAnimation--active" data-enter-animation="">
+               <div class="taggedLinkCard__upper" style="background-color:#FFF;">
+                  <a href="/{{ tag_slug }}/{{ api_slug }}/apis/"><img src="{{ api_image }}" class="taggedLinkCard__image" alt=""></a>
+               </div>
+               <div class="taggedLinkCard__lower">
+                  <div class="taggedLinkCard__copy">
+                     <h3 class="taggedLinkCard__title"><a href="/{{ tag_slug }}/{{ api_slug }}/apis/">{{ api_name }}</a></h3>
+                     <p class="taggedLinkCard__body">{{ api_description }}</p>
+                  </div>
+                  <p><a href="/{{ tag_slug }}/{{ api_slug }}/apis/">Learn more</a></p>
+               </div>
+            </div>
+         </div>
+
+    {% endif %}
+  {% endfor %}
+</div>
