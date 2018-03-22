@@ -28,7 +28,7 @@
 
          {% for path in item.paths %}
            {% assign path_name = path[0] %}
-           {% assign api_path_slug = path_name | lstrip | rstrip | remove_first: "/" | replace: '{','' | replace: '}','' | replace: ' ','-' | replace: '/','-' | replace: '&','-' | replace: ':','' | replace: '.','-' | replace: '=','-' | replace: '?','-' | replace: '_','-' | replace: '---','-' | replace: '--','-' | downcase %}
+           {% assign api_path_slug = path_name | lstrip | rstrip | remove_first: "/" | replace: '{','' | replace: '}','' | replace: ' ','-' | replace: '/','-' | replace: '&','-' | replace: ':','' | replace: '.','-' | replace: '=','-' | replace: '?','' | replace: '_','-' | replace: '---','-' | replace: '--','-' | downcase %}
            {% for method in path[1] %}
              {% assign method_details = method[1] %}
              {% assign verb = method[0] %}
