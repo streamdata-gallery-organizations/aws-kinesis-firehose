@@ -79,23 +79,21 @@
 
      <table border="0">
        <tr>
-         <td width="33%" align="center">
+         {% if listing_type == 'topic' %}
+           <td align="center">
+               <form>
+               <strong>Ranking:</strong>
+               <select name="rankFilter" id="rankFilter">
+                 <option value="All">All</option>
+                 <option value="10">10</option>
+                 <option value="9">9</option>
+                 <option value="8">8</option>
+               </select>
+               <input type="button" onclick="filterbyrank();" name="filter_by" value="Go" />
+           </td>
+         {% endif %}
 
-          {% if listing_type == 'topic' %}
-             <form>
-             <strong>Ranking:</strong>
-             <select name="rankFilter" id="rankFilter">
-               <option value="All">All</option>
-               <option value="10">10</option>
-               <option value="9">9</option>
-               <option value="8">8</option>
-             </select>
-             <input type="button" onclick="filterbyrank();" name="filter_by" value="Go" />
-           {% endif %}
-
-         </td>
-
-         <td width="33%" align="center">
+         <td align="center">
 
            <form>
            <strong>Tag(s):</strong>
@@ -115,35 +113,34 @@
 
          </td>
 
-         <td width="33%" align="center">
-
-          {% if listing_type == 'topic' %}
-             <form>
-             <strong>Verb:</strong>
-             <select name="verbFilter" id="verbFilter">
-               <option value="All">All</option>
-               <option value="GET">GET</option>
-               <option value="POST">POST</option>
-               <option value="PUT">PUT</option>
-               <option value="DELETE">DELETE</option>
-             </select>
-             <input type="button" onclick="filterbyverb();" name="filter_by" value="Go" />
-           {% endif %}
-
-         </td>
+         {% if listing_type == 'topic' %}
+           <td align="center">
+               <form>
+               <strong>Verb:</strong>
+               <select name="verbFilter" id="verbFilter">
+                 <option value="All">All</option>
+                 <option value="GET">GET</option>
+                 <option value="POST">POST</option>
+                 <option value="PUT">PUT</option>
+                 <option value="DELETE">DELETE</option>
+               </select>
+               <input type="button" onclick="filterbyverb();" name="filter_by" value="Go" />
+           </td>
+         {% endif %}
        </tr>
      </table>
 
    </form>
 
-   <table border="0" style="margin-top:35px;" align="center">
-     <tr>
-       <td colspan="3" align="center">
-         <a href="organizations.html"><strong>Group By Organization</strong></a> | <a href="index.html"><strong>List All APIs</strong></a>
-       </td>
-     </tr>
-   </table>
-
+   {% if listing_type == 'topic' %}
+     <table border="0" style="margin-top:35px;" align="center">
+       <tr>
+         <td colspan="3" align="center">
+           <a href="organizations.html"><strong>Group By Organization</strong></a> | <a href="index.html"><strong>List All APIs</strong></a>
+         </td>
+       </tr>
+     </table>
+   {% endif %}
 
    </div>
 </section>
