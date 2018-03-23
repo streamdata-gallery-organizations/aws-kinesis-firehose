@@ -83,48 +83,41 @@
            <td align="center">
                <form>
                <strong>Ranking:</strong>
-               <select name="rankFilter" id="rankFilter">
+               <select name="rankFilter" id="rankFilter" onchange="filterbyrank();">
                  <option value="All">All</option>
                  <option value="10">10</option>
                  <option value="9">9</option>
                  <option value="8">8</option>
                </select>
-               <input type="button" onclick="filterbyrank();" name="filter_by" value="Go" />
            </td>
          {% endif %}
 
          <td align="center">
-
            <form>
            <strong>Tag(s):</strong>
-           <select name="filter" id="tagfilter">
-
+           <select name="filter" id="tagfilter" onchange="filterbytag();">
            {% if listing_type == 'topic' %}
               {% assign navigation = site.data.topics | sort: 'label' %}
            {% else %}
               {% assign navigation = site.data.organizations | sort: 'label' %}
            {% endif %}
-
            {% for nav in navigation %}}
                <option value="{{ nav.url }}"{% if nav.label == site.tag %} selected{% endif %}>{{ nav.label }}</option>
            {% endfor %}
            </select>
-           <input type="button" onclick="filterbytag();" name="filter_by" value="Go" />
-
          </td>
 
          {% if listing_type == 'topic' %}
            <td align="center">
                <form>
                <strong>Verb:</strong>
-               <select name="verbFilter" id="verbFilter">
+               <select name="verbFilter" id="verbFilter" onchange="filterbyverb();">
                  <option value="All">All</option>
                  <option value="GET">GET</option>
                  <option value="POST">POST</option>
                  <option value="PUT">PUT</option>
                  <option value="DELETE">DELETE</option>
                </select>
-               <input type="button" onclick="filterbyverb();" name="filter_by" value="Go" />
            </td>
          {% endif %}
        </tr>
