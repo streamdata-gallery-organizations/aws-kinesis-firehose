@@ -1,9 +1,9 @@
-title: Streamdata Gallery
-url: aws-kinesis-firehose.api.streamdata.gallery
+title: Streamdata Gallery AWS Kinesis Firehose
+url: aws-kinesis-firehose.streamdata.gallery
 tag: AWS Kinesis Firehose
 markdown: kramdown
 exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md", ".DS_Store"]
-github_user: streamdata-gallery-organizations
+github_user: streamdata-gallery
 github_repo: aws-kinesis-firehose
 github_branch: master
 collections:
