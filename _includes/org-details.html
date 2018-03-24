@@ -129,12 +129,13 @@
                 {% for path in item.paths %}
 
                   {% assign path_name = path[0] %}
-                  {% assign api_path_slug = path_name | lstrip | rstrip | remove_first: "/" | replace: '{','' | replace: '}','' | replace: ' ','-' | replace: '/','-' | replace: '&','-' | replace: ':','' | replace: '.','-' | replace: '=','-' | replace: '?','-' | replace: '_','-' | replace: '---','-' | replace: '--','-' | downcase %}
+                  {% assign api_path_slug = path_name | lstrip | rstrip | remove_first: "/" | replace: '.','' | replace: '{','' | replace: '}','' | replace: ' ','-' | replace: '/','-' | replace: '&','-' | replace: ':','' | replace: '.','-' | replace: '=','-' | replace: '?','-' | replace: '_','-' | replace: '---','-' | replace: '--','-' | downcase %}
+
                   {% for method in path[1] %}
 
                     {% assign method_details = method[1] %}
                     {% assign verb = method[0] %}
-                    {% assign api_path_slug = api_path_slug | append: '-' | append: verb | replace: '_','-' | replace: '---','-' | replace: '--','-' | downcase %}
+                    {% assign api_path_slug = api_path_slug | append: '-' | append: verb | replace: '.','' | replace: '_','-' | replace: '---','-' | replace: '--','-' | downcase %}
                     {% assign api_path_summary = method_details.summary %}
                     {% assign api_path_description = method_details.description %}
                     {% assign api_path_parameters = method_details.parameters %}
@@ -143,7 +144,7 @@
                     <tr>
                       <td width="5%" align="center">&rarr;</td>
                       <td>
-                        <a href="/listings/{{ tag_slug }}/{{ api_slug }}/{{ api_path_slug }}/" target="_blank">{{ api_path_summary }}</a></td>
+                        <a href="/listings/{{ api_slug }}/{{ api_path_slug }}/" target="_blank">{{ api_path_summary }}</a></td>
                       </td>
                       <td width="8%" align="center">({{ verb | upcase }})</td>
                       <td>{{ path_name }}</td>
