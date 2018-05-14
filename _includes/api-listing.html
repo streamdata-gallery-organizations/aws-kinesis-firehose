@@ -10,17 +10,39 @@
         {% assign api_json_kin_rank = "" %}
         {% assign api_json_alexa_rank = "" %}
 
+        {% assign api_json_openapi_spec = "" %}
+        {% assign api_json_postman_collection = "" %}
+        {% assign api_json_asyncapi_url = "" %}
+
          {% for entry in listing_object %}
            {% if entry.name %}
             {% for api in entry.apis %}
                {% if entry.name == item.x-collection-name %}
+
                  {% assign api_name = entry.name %}
-                 {% assign api_slug = api_name | replace: ' ','-' | replace: '/','' | replace: '&','-' | replace: '=','-' | replace: '{','-' | replace: '}','-' | replace: '?','-' | replace: '_','-' | replace: '--','-' | downcase %}
+                 {% assign api_slug = api_name | replace: ' ','-' | replace: '/','' | replace: '.','' | replace: '&','-' | replace: '=','-' | replace: '{','-' | replace: '}','-' | replace: '?','-' | replace: '_','-' | replace: '--','-' | downcase %}
                  {% assign api_description = entry.description %}
                  {% assign api_image = entry.image %}
                  {% assign api_json_url = entry.url %}
                  {% assign api_json_kin_rank = entry.x-kinRank %}
                  {% assign api_json_alexa_rank = entry.x-alexaRank %}
+
+                 {% for property in api.properties %}
+
+                    {% if property.type == 'x-openapi-spec' %}
+                      {% assign api_json_openapi_spec = property.url %}
+                    {% endif %}
+
+                    {% if property.type == 'x-postman-collection' %}
+                      {% assign api_json_postman_collection = property.url %}
+                    {% endif %}
+
+                    {% if property.type == 'x-asyncapi-spec' %}
+                      {% assign api_json_asyncapi_url = property.url %}
+                    {% endif %}
+
+                 {% endfor %}
+
                {% endif %}
              {% endfor %}
            {% endif %}
@@ -28,11 +50,15 @@
 
          {% for path in item.paths %}
            {% assign path_name = path[0] %}
-           {% assign api_path_slug = path_name | lstrip | rstrip | remove_first: "/" | replace: '{','' | replace: '}','' | replace: ' ','-' | replace: '/','-' | replace: '&','-' | replace: ':','' | replace: '.','-' | replace: '=','-' | replace: '?','' | replace: '_','-' | replace: '---','-' | replace: '--','-' | downcase %}
+           {% assign api_path_slug = path_name | lstrip | rstrip | replace: '{','' | replace: '}','' | replace: ' ','-' | replace: '/','-' | replace: '&','-' | replace: ':','' | replace: '.','-' | replace: '=','-' | replace: '?','' | replace: '_','-' | replace: '---','-' | replace: '--','-' | downcase %}
            {% for method in path[1] %}
              {% assign method_details = method[1] %}
              {% assign verb = method[0] %}
              {% assign api_path_slug = api_path_slug | append: '-' | append: verb | replace: '_','-' | replace: '---','-' | replace: '--','-' | downcase %}
+             {% assign first = api_path_slug  | slice: 0 %}
+             {% if first == '-' %}
+              {% assign api_path_slug = api_path_slug | remove_first: "-" %}
+             {% endif %}
              {% assign api_path_summary = method_details.summary %}
              {% assign api_path_description = method_details.description %}
              {% assign api_path_parameters = method_details.parameters %}
@@ -50,7 +76,12 @@
                      <h3 class="taggedLinkCard__title"><a href="/{{ tag_slug }}/{{ api_slug }}/{{ api_path_slug }}/">{{ api_name }} {{ api_path_summary }}</a></h3>
                      <p class="taggedLinkCard__body">{{ api_path_description }}</p>
                   </div>
-                  <p><a href="/{{ tag_slug }}/{{ api_slug }}/{{ api_path_slug }}/">Learn more</a></p>
+                  <!--<p><a href="/{{ tag_slug }}/{{ api_slug }}/{{ api_path_slug }}/">Learn more</a></p>-->
+                  <p align="center">
+                    {% if api_json_openapi_spec != '' %}<a href="/{{ tag_slug }}/{{ api_slug }}/{{ api_path_slug }}/#openapi"><img src="https://s3.amazonaws.com/kinlane-productions/streamdata-api-gallery/openapi-icon-100.png" width="50" align="center" title="AsyncAPI" /></a>{% endif %}
+                    {% if api_json_postman_collection != '' %}<a href="/{{ tag_slug }}/{{ api_slug }}/{{ api_path_slug }}/#postman"><img src="https://s3.amazonaws.com/kinlane-productions/streamdata-api-gallery/postman-icon-100.png" width="50" align="center" title="AsyncAPI" /></a>{% endif %}
+                    {% if api_json_asyncapi_url != '' %}<a href="/{{ tag_slug }}/{{ api_slug }}/{{ api_path_slug }}/#asyncapi"><img src="https://s3.amazonaws.com/kinlane-productions/streamdata-api-gallery/asyncapi-icon-100.png" width="50" align="center" title="AsyncAPI" /></a>{% endif %}
+                  </a>
                </div>
             </div>
          </div>
