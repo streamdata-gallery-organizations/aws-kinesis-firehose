@@ -24,7 +24,7 @@
         </div>
      </div>
   </section>
-  {% else %}
+  {% endif %}
   <section class="APIDetailStats">
      <h2 class="APIDetailStats__title">Savings With Streamdata.io</h2>
      <div class="APIDetailStats__row">
@@ -148,6 +148,48 @@
          <div class="APIDescription__tableBody">
             <div class="APIDescription__tableBodyCopy">
                <p><a href="{{ terms_of_service_url }}" target="_blank" rel="noopener">{{ terms_of_service_url }}</a></p>
+            </div>
+         </div>
+      </div>
+      {% endif %}
+
+      {% if api_json_openapi_spec != '' %}
+      <a name="openapi"></a>
+      <div class="APIDescription__table">
+         <div class="APIDescription__tableHeader">
+            <p class="APIDescription__tableHeaderCopy">OpenAPI</p>
+         </div>
+         <div class="APIDescription__tableBody">
+            <div class="APIDescription__tableBodyCopy">
+               <p><a href="{{ api_json_openapi_spec }}" target="_blank" rel="noopener">{{ api_json_openapi_spec }}</a></p>
+            </div>
+         </div>
+      </div>
+      {% endif %}
+
+      {% if api_json_postman_collection != '' %}
+      <a name="postman"></a>
+      <div class="APIDescription__table">
+         <div class="APIDescription__tableHeader">
+            <p class="APIDescription__tableHeaderCopy">Postman Collection</p>
+         </div>
+         <div class="APIDescription__tableBody">
+            <div class="APIDescription__tableBodyCopy">
+               <p><a href="{{ api_json_postman_collection }}" target="_blank" rel="noopener">{{ api_json_postman_collection }}</a></p>
+            </div>
+         </div>
+      </div>
+      {% endif %}
+
+      {% if api_json_asyncapi_url != '' %}
+      <a name="asyncapi"></a>
+      <div class="APIDescription__table">
+         <div class="APIDescription__tableHeader">
+            <p class="APIDescription__tableHeaderCopy">AsyncAPI</p>
+         </div>
+         <div class="APIDescription__tableBody">
+            <div class="APIDescription__tableBodyCopy">
+               <p><a href="{{ api_json_openapi_spec }}" target="_blank" rel="noopener">{{ api_json_asyncapi_url }}</a></p>
             </div>
          </div>
       </div>
