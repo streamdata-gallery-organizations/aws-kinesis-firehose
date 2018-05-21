@@ -22,7 +22,7 @@
   url: http://allied.irish.bank.api.gallery.streamdata.io
   image: allied-irish-bank.png
   description: The gallery section containing Allied Irish Bank APIs.
-  paths: 2
+  paths: 23
 - label: Alpha Vantage
   slug: alpha-vantage
   url: http://alpha.vantage.api.gallery.streamdata.io
@@ -53,12 +53,6 @@
   image: apimetrics.png
   description: The gallery section containing APImetrics APIs.
   paths: 37
-- label: Application Insights DUPE
-  slug: application-insights-dupe
-  url: http://application.insights.dupe.api.gallery.streamdata.io
-  image: application-insights-dupe.png
-  description: The gallery section containing Application Insights DUPE APIs.
-  paths: 10
 - label: ARIN
   slug: arin
   url: http://arin.api.gallery.streamdata.io
@@ -449,6 +443,12 @@
   image: aws-xray.png
   description: The gallery section containing AWS X-Ray APIs.
   paths: 6
+- label: AXA Assistance
+  slug: axa-assistance
+  url: http://axa.assistance.api.gallery.streamdata.io
+  image: axa-assistance.png
+  description: The gallery section containing AXA Assistance APIs.
+  paths: 111
 - label: Azure Advisor
   slug: azure-advisor
   url: http://azure.advisor.api.gallery.streamdata.io
@@ -689,6 +689,12 @@
   image: bank-of-scotland.png
   description: The gallery section containing Bank of Scotland APIs.
   paths: 6
+- label: BetterDoctor
+  slug: betterdoctor
+  url: http://betterdoctor.api.gallery.streamdata.io
+  image: betterdoctor.png
+  description: The gallery section containing BetterDoctor APIs.
+  paths: 17
 - label: Bitbucket
   slug: bitbucket
   url: http://bitbucket.api.gallery.streamdata.io
@@ -838,7 +844,7 @@
   url: http://flickr.api.gallery.streamdata.io
   image: flickr.png
   description: The gallery section containing Flickr APIs.
-  paths: 21
+  paths: 25
 - label: Freesound.org
   slug: freesoundorg
   url: http://freesoundorg.api.gallery.streamdata.io
@@ -869,6 +875,12 @@
   image: github.png
   description: The gallery section containing GitHub APIs.
   paths: 244
+- label: Gitter
+  slug: gitter
+  url: http://gitter.api.gallery.streamdata.io
+  image: gitter.png
+  description: The gallery section containing Gitter APIs.
+  paths: 19
 - label: Gmail
   slug: gmail
   url: http://gmail.api.gallery.streamdata.io
@@ -995,12 +1007,12 @@
   image: google-cloud-functions.png
   description: The gallery section containing Google Cloud Functions APIs.
   paths: 1
-- label: Google Cloud Identity & Access Management (IAM)
-  slug: google-cloud-identity--access-management-iam
-  url: http://google.cloud.identity..access.management.iam.api.gallery.streamdata.io
-  image: google-cloud-identity--access-management-iam.png
-  description: The gallery section containing Google Cloud Identity & Access Management
-    (IAM) APIs.
+- label: Google Cloud Identity Access Management
+  slug: google-cloud-identity-access-management
+  url: http://google.cloud.identity.access.management.api.gallery.streamdata.io
+  image: google-cloud-identity-access-management.png
+  description: The gallery section containing Google Cloud Identity Access Management
+    APIs.
   paths: 13
 - label: Google Cloud Key Management Service (KMS)
   slug: google-cloud-key-management-service-kms
@@ -1196,6 +1208,12 @@
   image: google-play.png
   description: The gallery section containing Google Play APIs.
   paths: 192
+- label: Google Plus
+  slug: google-plus
+  url: http://google.plus.api.gallery.streamdata.io
+  image: google-plus.png
+  description: The gallery section containing Google Plus APIs.
+  paths: 29
 - label: Google Safe Browsing
   slug: google-safe-browsing
   url: http://google.safe.browsing.api.gallery.streamdata.io
@@ -1286,12 +1304,6 @@
   image: google-url-shortener.png
   description: The gallery section containing Google URL Shortener APIs.
   paths: 3
-- label: Google+
-  slug: google
-  url: http://google.api.gallery.streamdata.io
-  image: google.png
-  description: The gallery section containing Google+ APIs.
-  paths: 29
 - label: GSA Per Diem API
   slug: gsa-per-diem-api
   url: http://gsa.per.diem.api.api.gallery.streamdata.io
@@ -1304,6 +1316,12 @@
   image: halifax-bank.png
   description: The gallery section containing Halifax Bank APIs.
   paths: 3
+- label: Healthcare.gov
+  slug: healthcaregov
+  url: http://healthcaregov.api.gallery.streamdata.io
+  image: healthcaregov.png
+  description: The gallery section containing Healthcare.gov APIs.
+  paths: 16
 - label: Heroku
   slug: heroku
   url: http://heroku.api.gallery.streamdata.io
@@ -1346,12 +1364,6 @@
   image: linkedin.png
   description: The gallery section containing LinkedIn APIs.
   paths: 17
-- label: Los Angeles Times
-  slug: los-angeles-times
-  url: http://los.angeles.times.api.gallery.streamdata.io
-  image: los-angeles-times.png
-  description: The gallery section containing Los Angeles Times APIs.
-  paths: 330
 - label: Lyft
   slug: lyft
   url: http://lyft.api.gallery.streamdata.io
@@ -1370,6 +1382,12 @@
   image: mastercard.png
   description: The gallery section containing MasterCard APIs.
   paths: 11
+- label: Mattermost
+  slug: mattermost
+  url: http://mattermost.api.gallery.streamdata.io
+  image: mattermost.png
+  description: The gallery section containing Mattermost APIs.
+  paths: 209
 - label: Medium
   slug: medium
   url: http://medium.api.gallery.streamdata.io
@@ -1448,6 +1466,12 @@
   image: pagerduty.png
   description: The gallery section containing PagerDuty APIs.
   paths: 75
+- label: ParallelDots
+  slug: paralleldots
+  url: http://paralleldots.api.gallery.streamdata.io
+  image: paralleldots.png
+  description: The gallery section containing ParallelDots APIs.
+  paths: 14
 - label: Particle
   slug: particle
   url: http://particle.api.gallery.streamdata.io
@@ -1483,7 +1507,7 @@
   url: http://postmark.api.gallery.streamdata.io
   image: postmark.png
   description: The gallery section containing Postmark APIs.
-  paths: 354
+  paths: 98
 - label: Quandl
   slug: quandl
   url: http://quandl.api.gallery.streamdata.io
@@ -1556,6 +1580,12 @@
   image: spotify.png
   description: The gallery section containing Spotify APIs.
   paths: 37
+- label: Stack Exchange
+  slug: stack-exchange
+  url: http://stack.exchange.api.gallery.streamdata.io
+  image: stack-exchange.png
+  description: The gallery section containing Stack Exchange APIs.
+  paths: 124
 - label: StatusPage.io
   slug: statuspageio
   url: http://statuspageio.api.gallery.streamdata.io
@@ -1586,6 +1616,12 @@
   image: sustainable-facilities-tool-api.png
   description: The gallery section containing Sustainable Facilities Tool API APIs.
   paths: 34
+- label: System Award Management
+  slug: system-award-management
+  url: http://system.award.management.api.gallery.streamdata.io
+  image: system-award-management.png
+  description: The gallery section containing System Award Management APIs.
+  paths: 1
 - label: The Guardian
   slug: the-guardian
   url: http://the.guardian.api.gallery.streamdata.io
@@ -1603,7 +1639,7 @@
   url: http://twitter.api.gallery.streamdata.io
   image: twitter.png
   description: The gallery section containing Twitter APIs.
-  paths: 330
+  paths: 74
 - label: Tyk
   slug: tyk
   url: http://tyk.api.gallery.streamdata.io
@@ -1635,12 +1671,18 @@
   description: The gallery section containing USA.Gov Corporate Consumer Contact Information
     APIs.
   paths: 2
-- label: USAJobs
+- label: USAJobs API
   slug: usajobs-api
   url: http://usajobs.api.api.gallery.streamdata.io
   image: usajobs-api.png
   description: The gallery section containing USAJobs API APIs.
   paths: 1
+- label: VersaPay
+  slug: versapay
+  url: http://versapay.api.gallery.streamdata.io
+  image: versapay.png
+  description: The gallery section containing VersaPay APIs.
+  paths: 25
 - label: Weather Underground
   slug: weather-underground
   url: http://weather.underground.api.gallery.streamdata.io
@@ -1683,7 +1725,7 @@
   image: zerigo.png
   description: The gallery section containing Zerigo APIs.
   paths: 33
-- label: Zuora
+- label: ZuoraAPI
   slug: zuoraapi
   url: http://zuoraapi.api.gallery.streamdata.io
   image: zuoraapi.png

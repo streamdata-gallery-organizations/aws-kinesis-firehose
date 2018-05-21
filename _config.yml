@@ -1,9 +1,10 @@
-title: Streamdata Gallery AWS Kinesis Firehose
+title: Streamdata API Gallery - 
+description: A gallery of APIs to demonstrate what is possible when it comes to making data, content, and algorithms more real time, and event-driven as part of the API economy.
 url: aws-kinesis-firehose.streamdata.gallery
-tag: AWS Kinesis Firehose
+tag: 
 markdown: kramdown
 exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md", ".DS_Store"]
-github_user: streamdata-gallery
+github_user: streamdata-gallery-entities
 github_repo: aws-kinesis-firehose
 github_branch: master
 collections:

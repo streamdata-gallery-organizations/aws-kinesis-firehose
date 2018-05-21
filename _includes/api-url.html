@@ -1,4 +1,6 @@
-{% assign api_url = page.schemes[0] | append: '://' | append: page.host | append: page.basePath | append: path %}
+{% assign api_base_url = api_host | append: api_base | append: path %}
+{% assign api_base_url = api_base_url | replace: '//','' %}
+{% assign api_url = api_scheme | append: '://' | append: api_base_url %}
 {% assign api_query = '' %}
 {% for parameter in api_path_parameters %}
   {% if parameter.in == 'query' %}

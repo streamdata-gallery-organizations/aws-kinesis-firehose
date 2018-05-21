@@ -1,11 +1,11 @@
-<section class="APIDetailHeader  APIDetailHeader--extra-top-padding ">
+<section class="APIDetailHeader">
    <div class="APIDetailHeader__container">
       <div class="APIDetailHeader__left">
          <img src="{{ apis_json.image }}" alt="{{ page.info.title }}" class="APIDetailHeader__image">
       </div>
       <div class="APIDetailHeader__right">
          <h1 class="APIDetailHeader__title">{{ api_name }} - {{ api_path_summary }}</h1>
-         <h2 class="APIDetailHeader__subtitle">{{ api_path_description }}</h2>
+         <p>{{ api_path_description }}</p>
          <div class="APIDetailHeader__dateContainer">
             <p class="APIDetailHeader__dateCallout">Posted on:</p>
             <p class="APIDetailHeader__date">{{ apis_json.modified | date: %b %y" }}</p>
@@ -49,31 +49,21 @@
       <h2 class="APIDescription__header">API Description</h2>
       <div class="APIDescription__table">
          <div class="APIDescription__tableHeader">
-            <p class="APIDescription__tableHeaderCopy">API</p>
-         </div>
-         <div class="APIDescription__tableBody">
-            <div class="APIDescription__tableBodyCopy">
-               <p>{{ api_path_summary }}</p>
-            </div>
-         </div>
-      </div>
-      <div class="APIDescription__table">
-         <div class="APIDescription__tableHeader">
             <p class="APIDescription__tableHeaderCopy">Provider</p>
          </div>
          <div class="APIDescription__tableBody">
             <div class="APIDescription__tableBodyCopy">
-               <p>{{ page.info.title }}</p>
+               <p>{{ api_name}}</p>
             </div>
          </div>
       </div>
       <div class="APIDescription__table">
          <div class="APIDescription__tableHeader">
-            <p class="APIDescription__tableHeaderCopy">API decription</p>
+            <p class="APIDescription__tableHeaderCopy">decription</p>
          </div>
          <div class="APIDescription__tableBody">
             <div class="APIDescription__tableBodyCopy">
-               <p>{{ api_path_description }}</p>
+               <p>{{ api_description }}</p>
             </div>
          </div>
       </div>

@@ -1,13 +1,13 @@
 {% assign api_slug = page.name | replace: ' ','-' | replace: '/','' | replace: '&','-' | replace: '=','-' | replace: '{','-' | replace: '}','-' | replace: '?','-' | replace: '_','-' | replace: '--','-' | downcase %}
 
-<section class="APIDetailHeader  APIDetailHeader--extra-top-padding ">
+<section class="APIDetailHeader">
    <div class="APIDetailHeader__container">
       <div class="APIDetailHeader__left">
          <img src="{{ apis_json.image }}" alt="{{ page.info.title }}" class="APIDetailHeader__image">
       </div>
       <div class="APIDetailHeader__right">
          <h1 class="APIDetailHeader__title">{{ page.name }}</h1>
-         <h2 class="">{{ page.description | replace: "???","'" }}</h2>
+         <p>{{ page.description | replace: "???","'" }}</p>
          <div class="APIDetailHeader__dateContainer" style="padding-top:10px;">
             <p class="APIDetailHeader__dateCallout">Posted on:</p>
             <p class="APIDetailHeader__date">{{ page.modified | date: %b %y" }}</p>
@@ -125,33 +125,36 @@
         {% for item in site.listings %}
           {% if item.swagger %}
             {% if item.swagger == "2.0" %}
-              {% if page.name == item.x-collection-name %}
-                {% for path in item.paths %}
-
-                  {% assign path_name = path[0] %}
-                  {% assign api_path_slug = path_name | lstrip | rstrip | remove_first: "/" | replace: '.','' | replace: '{','' | replace: '}','' | replace: ' ','-' | replace: '/','-' | replace: '&','-' | replace: ':','' | replace: '.','-' | replace: '=','-' | replace: '?','-' | replace: '_','-' | replace: '---','-' | replace: '--','-' | downcase %}
-
-                  {% for method in path[1] %}
-
-                    {% assign method_details = method[1] %}
-                    {% assign verb = method[0] %}
-                    {% assign api_path_slug = api_path_slug | append: '-' | append: verb | replace: '.','' | replace: '_','-' | replace: '---','-' | replace: '--','-' | downcase %}
-                    {% assign api_path_summary = method_details.summary %}
-                    {% assign api_path_description = method_details.description %}
-                    {% assign api_path_parameters = method_details.parameters %}
-                    {% assign api_path_tags = method_details.tags %}
-
-                    <tr>
-                      <td width="5%" align="center">&rarr;</td>
-                      <td>
-                        <a href="/listings/{{ api_slug }}/{{ api_path_slug }}/" target="_blank">{{ api_path_summary }}</a></td>
-                      </td>
-                      <td width="8%" align="center">({{ verb | upcase }})</td>
-                      <td>{{ path_name }}</td>
-                    </tr>
-
-                  {% endfor %}
-                {% endfor %}
+            	{% if item.x-complete == 0 %}
+	              {% if page.name == item.x-collection-name %}
+	                {% for path in item.paths %}
+	
+	                  {% assign path_name = path[0] %}
+	                  {% assign api_path_slug = path_name | lstrip | rstrip | remove_first: "/" | replace: '.','' | replace: '{','' | replace: '}','' | replace: ' ','-' | replace: '/','-' | replace: '&','-' | replace: ':','' | replace: '.','-' | replace: '=','-' | replace: '?','-' | replace: '_','-' | replace: '---','-' | replace: '--','-' | downcase %}
+	
+	                  {% for method in path[1] %}
+	
+	                    {% assign method_details = method[1] %}
+	                    {% assign verb = method[0] %}
+	                    {% assign api_path_slug = api_path_slug | append: '-' | append: verb | replace: '.','' | replace: '_','-' | replace: '---','-' | replace: '--','-' | downcase %}
+	                    {% assign api_path_summary = method_details.summary %}
+	                    {% assign api_path_description = method_details.description %}
+	                    {% assign api_path_parameters = method_details.parameters %}
+	                    {% assign api_path_tags = method_details.tags %}
+	
+	                    <tr>
+	                      <td width="5%" align="center">&rarr;</td>
+	                      <td>
+	                        <a href="/listings/{{ api_slug }}/{{ api_path_slug }}/" target="_blank">{{ api_path_summary }}</a>
+	                      </td>
+	                      <td width="8%" align="center">({{ verb | upcase }})</td>
+	                      <!--<td>{{ path_name }}</td>-->
+	                      <td>{{ api_path_description }}</td>
+	                    </tr>
+	
+	                  {% endfor %}
+	                {% endfor %}
+	             {% endif %}
               {% endif %}
             {% endif %}
           {% endif %}

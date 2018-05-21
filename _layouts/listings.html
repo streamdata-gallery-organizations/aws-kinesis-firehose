@@ -2,24 +2,67 @@
 layout: default
 ---
 
-{% assign openapi = page | replace: ' ','-' | downcase %}
-{% assign slug = page.info.title | replace: ' ','-' | downcase %}
-
-{% assign slug = page.info.title %}
-{% for item in site.listings %}
-  {% if item.name %}
-    {% if page.x-collection-name == item.name %}
-      {% assign apis_json = item %}
-    {% endif %}
+<div class="shortMasthead  shortMasthead--extra-top-padding ">
+  {% if page.info.title or page.name %}
+       <!--nothing-->
+  {% else %}
+       {% include api-listing-feature.html %}
   {% endif %}
-{% endfor %}
+</div>
 
-{% include apis-json.html %}
-{% include x-common.html %}
-{% include api-paths.html %}
-{% include api-url.html %}
-{% include api-stream-url.html %}
+<section class="taggedLinkCards">
 
-{% assign stream_rank = page.x-streamrank %}
+   {% if page.info.title or page.name %}
+        <!--nothing-->
+   {% else %}
+        {% include api-tag-filter.html %}
+   {% endif %}
 
-{% include api-details.html %}
+   {% if page.info.title %}
+
+    {% assign api_host = page.host %}
+    {% assign api_base = page.basePath %}
+    {% assign api_scheme = page.schemes[0] %}
+
+     {% assign openapi = page | replace: ' ','-' | downcase %}
+     {% assign slug = page.info.title | replace: ' ','-' | downcase %}
+
+     {% assign slug = page.info.title %}
+     {% for item in site.listings %}
+       {% if item.name %}
+         {% if page.x-collection-name == item.name %}
+           {% assign apis_json = item %}
+         {% endif %}
+       {% endif %}
+     {% endfor %}
+
+     {% include apis-json.html %}
+     {% include x-common.html %}
+     {% include api-paths.html %}
+     {% include api-url.html %}
+     {% include api-stream-url.html %}
+
+     {% assign stream_rank = page.x-streamrank %}
+
+     {% include api-details.html %}
+
+   {% else %}
+   
+     {% assign apis_json = page %}
+
+     {% include apis-json.html %}
+     {% include x-common.html %}
+
+     {% include org-details.html %}
+
+   {% endif %}
+
+</section>
+
+<div class="submitApi__overflowContainer" data-submit-api="">
+   <div class="submitApi submitApi--left-hand-image">
+
+     {% include api-listing-submit.html %}
+
+   </div>
+</div>
