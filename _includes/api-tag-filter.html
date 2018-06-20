@@ -79,8 +79,8 @@
 
    <table border="0" align="center">
      <tr>
-     	
-       {% if listing_type == 'topic' %}
+
+       {% if listing_type == 'topics' %}
          <td align="center">
              <form>
              <strong>Ranking:</strong>
@@ -95,13 +95,13 @@
 
        <td align="center">
          <form>
-           {% if listing_type == 'topic' %}
+           {% if listing_type == 'topics' %}
               <strong>Tag(s):</strong>
            {% else %}
               <strong>Organization(s):</strong>
            {% endif %}
          <select name="filter" id="tagfilter" onchange="filterbytag();">
-         {% if listing_type == 'topic' %}
+         {% if listing_type == 'topics' %}
             {% assign navigation = site.data.topics | sort: 'label' %}
          {% else %}
             {% assign navigation = site.data.organizations | sort: 'label' %}
@@ -112,7 +112,7 @@
          </select>
        </td>
 
-       {% if listing_type == 'topic' %}
+       {% if listing_type == 'topics' %}
          <td align="center">
              <form>
              <strong>Verb:</strong>
@@ -129,7 +129,7 @@
    </table>
  </form>
 
- {% if listing_type == 'topic' %}
+ {% if listing_type == 'topics' %}
    <br /><br /><table border="0" align="center">
      <tr>
        <td colspan="3" align="center">
